@@ -1,23 +1,40 @@
-package bank.management.system;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.FlowLayout;
 
-public class Login extends JFrame {
-    Login() {
-        super("Bank Management System");
+public class Main extends JFrame {
+    Main() {
+        super("Bank Management System");//tytuł
+        //okienko
+        setSize(850, 480);
+        setLocation(450, 200);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//zamykanie aplikacji po kliknięciu X
+
+        //ikony
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("logo.png"));
-        Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        Image i2 = i1.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
         image.setBounds(50, 10, 100, 100);
         add(image);
 
-        setSize(850, 480);
-        setLocation(450, 200);
-        setVisible(true);
+        //Labele , pola tekstowe i przycisk
+        JLabel login = new JLabel("Login: ");
+        add(login);
+        JTextField t1 = new JTextField(20);
+        add(t1);
+        JLabel pswrd = new JLabel("Password: ");
+        add(pswrd);
+        JTextField t2 = new JTextField(20);
+        add(t2);
+        JButton b = new JButton("Submit");
+        add(b);
+        //środkowanie wszystkiego
+        setLayout(new FlowLayout());
+
     }
     public static void main(String[] args) {
-        new Login();
+        new Main();
     }
 }
