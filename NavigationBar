@@ -1,0 +1,75 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class NavigationBar extends JFrame implements ActionListener {
+
+    public NavigationBar() {
+        setTitle("Navigation Bar Example");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu positionMenu = new JMenu("Position");
+        JMenuItem northItem = new JMenuItem("North");
+        JMenuItem southItem = new JMenuItem("South");
+        JMenuItem eastItem = new JMenuItem("East");
+        JMenuItem westItem = new JMenuItem("West");
+
+        northItem.addActionListener(this);
+        southItem.addActionListener(this);
+        eastItem.addActionListener(this);
+        westItem.addActionListener(this);
+
+        positionMenu.add(northItem);
+        positionMenu.add(southItem);
+        positionMenu.add(eastItem);
+        positionMenu.add(westItem);
+
+        menuBar.add(positionMenu);
+
+        setJMenuBar(menuBar);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            NavigationBar navBar = new NavigationBar();
+            navBar.setVisible(true);
+        });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        switch (command) {
+            case "North":
+                getContentPane().removeAll();
+                getContentPane().add(new JLabel("Navigation Bar at North"), BorderLayout.NORTH);
+                revalidate();
+                repaint();
+                break;
+            case "South":
+                getContentPane().removeAll();
+                getContentPane().add(new JLabel("Navigation Bar at South"), BorderLayout.SOUTH);
+                revalidate();
+                repaint();
+                break;
+            case "East":
+                getContentPane().removeAll();
+                getContentPane().add(new JLabel("Navigation Bar at East"), BorderLayout.EAST);
+                revalidate();
+                repaint();
+                break;
+            case "West":
+                getContentPane().removeAll();
+                getContentPane().add(new JLabel("Navigation Bar at West"), BorderLayout.WEST);
+                revalidate();
+                repaint();
+                break;
+            default:
+                break;
+        }
+    }
+}
